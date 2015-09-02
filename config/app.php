@@ -138,6 +138,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
+
         /*
          * Application Service Providers...
          */
@@ -147,6 +149,9 @@ return [
         App\Providers\BladeSetServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
+        Spatie\Browsershot\BrowsershotServiceProvider::class,
+
+
 
     ],
 
@@ -197,6 +202,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+
 
     ],
 

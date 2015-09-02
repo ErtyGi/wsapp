@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <h3 class="page-title">Tickets<small></small></h3>
             <ul class="page-breadcrumb breadcrumb">
-                <li><i class="fa fa-home"></i> <a href="{{URL::to('/')}}">{{trans('app.dashboard')}}</a></li>
+                <li><i class="fa fa-home"></i> <a href="{{URL::to('/dashboard')}}">{{trans('app.dashboard')}}</a></li>
                 <li><a href="{{URL::to('tickets')}}">Tickets</a></li>
             </ul>
         </div>
@@ -23,7 +23,7 @@
     <!-- BEGIN PAGE CONTENT-->
 
 
-
+    <div class="row">
     <div class="container col-md-8 col-md-offset-2">
         <div class="well well bs-component">
             <div class="content">
@@ -98,6 +98,7 @@
                     </div>
                 </fieldset>
             </form>
+        </div>
         </div>
     </div>
 @endsection

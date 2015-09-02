@@ -8,7 +8,9 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "bllim/datatables": "*",
-        "illuminate/html": "5.*"
+        "illuminate/html": "5.*",
+        "spatie/browsershot": "dev-master"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

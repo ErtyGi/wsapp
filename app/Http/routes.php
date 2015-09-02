@@ -43,15 +43,19 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('settings/config','Admin\Settings\ConfigController');
     Route::controller('settings/config/data','Admin\Settings\ConfigController');
 
+    // Reports Managment
+    Route::resource('analisi/reports','Admin\ReportsController');
+
+    Route::get('/test', 'Admin\ReportsController@test');
+
 
     //Tickets
-    Route::get('/contact', 'TicketsController@create');
     Route::get('/ticket/create', 'TicketsController@create');
     Route::post('/contact', 'TicketsController@store');
     Route::post('/ticket/create', 'TicketsController@store');
 
 
-        Route::get('/tickets', 'TicketsController@myIindex');
+    Route::get('/tickets', 'TicketsController@myIindex');
 
 
     Route::get('/ticket/{slug?}', 'TicketsController@show');
@@ -61,6 +65,10 @@ Route::group(['middleware' => 'auth'], function()
 
     // Comments Ticket
     Route::post('/comment', 'CommentsController@newComment');
+
+
+
+
 
 
 

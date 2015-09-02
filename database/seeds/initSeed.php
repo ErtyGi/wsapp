@@ -18,5 +18,7 @@ class initSeed extends Seeder{
         $user->save();
 
         \App\Model\UserGroup::create(['user_id'=>1,'group_id'=>1]);
+
+        \App\Model\Report::create(['website_id'=>1, 'user_id'=>1]);
     }
 }

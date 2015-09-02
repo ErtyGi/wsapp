@@ -18,6 +18,10 @@
                     <li><a href="{{url('/tickets')}}" class="@if(Request::segment(1)=="tickets" || Request::segment(1)=="") active @endif">
                             <i class="fa fa-ticket fa-fw"></i> Tickets</a></li>
             @endif
+                @if(isperms('analisi/reports') || isperms('analisi/reports/create') || isperms('analisi/reports/delete'))
+                    <li><a href="{{url('/analisi/reports')}}" class="@if(Request::segment(1)=="analisi/reports" || Request::segment(1)=="") active @endif">
+                            <i class="fa fa-list-alt fa-fw"></i> Reports</a></li>
+                @endif
 
         </ul>
     </div>

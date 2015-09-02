@@ -35,7 +35,7 @@ class TicketsController extends Controller
         $user = Auth::user();
         $tickets = $user->tickets()->latest()->get();
 
-        return view('cms.tickets.index', ['tickets'=> $tickets]);
+        return view('cms.tickets.index', compact('tickets'));
 
     }
 
@@ -81,7 +81,7 @@ class TicketsController extends Controller
             $message->to( Auth::user()->email)->subject('Learning Laravel test email');
         });
 
-        return redirect('/ticket/create')->with('status', 'Your ticket has been created! Its unique id is:'.$slug);
+        return redirect('/ticket/create')->with('custom_success', 'Your ticket has been created! Its unique id is:'.$slug);
     }
 
     /**

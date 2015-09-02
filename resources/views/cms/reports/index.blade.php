@@ -13,10 +13,10 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h3 class="page-title">Tickets<small></small></h3>
+            <h3 class="page-title">Reports<small></small></h3>
             <ul class="page-breadcrumb breadcrumb">
-                <li><i class="fa fa-home"></i> <a href="{{URL::to('/')}}">{{trans('app.dashboard')}}</a></li>
-                <li><a href="{{URL::to('tickets')}}">Tickets</a></li>
+                <li><i class="fa fa-home"></i> <a href="{{URL::to('/dashboard')}}">{{trans('app.dashboard')}}</a></li>
+                <li><a href="{{URL::to('analisi/reports')}}">Reports</a></li>
             </ul>
         </div>
     </div>
@@ -27,15 +27,17 @@
     <div class="portlet">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-ticket"></i> Tickets
+                <i class="fa fa-report"></i> Reports
             </div>
             <div class="actions">
-                    <a href="{{URL::to('/ticket/create')}}" class="btn btn-primary btn-xs yellow-stripe">
+                    <a href="{!! action('Admin\ReportsController@create') !!}" class="btn btn-primary btn-xs yellow-stripe">
                         <i class="fa fa-plus"></i>
-                        <span class="hidden-480"> New Ticket</span>
+                        <span class="hidden-480"> New Report</span>
                     </a>
             </div>
         </div>
+    </div>
+
         <div class="portlet-body">
             <div class="table-container">
                 @if (session('status'))
@@ -43,35 +45,34 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                @if ($tickets->isEmpty())
-                    <p> There is no ticket.</p>
+                @if ($reports->isEmpty())
+                    <p> There is no Report.</p>
                 @else
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr role="row" class="heading">
-                            <th width="5%">ID</th>
-                            <th width="30%">Title</th>
-                            <th width="20%">Status</th>
+                            <th width="10%">ID</th>
+
                             <th width="20%">Date</th>
-                            <th width="20%">Action</th>
-                            <th width="5%"></th>
+                            <th width="10%">Action</th>
+                            <th width="10%"></th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($tickets as $ticket)
+                        @foreach($reports as $report)
                             <tr>
-                                <td>{!! $ticket->id !!}</td>
+                                <td>{!! $report->id !!}</td>
+
+
                                 <td>
-                                    <a href="{!! action('TicketsController@show', $ticket->slug) !!}">{!! $ticket->title !!} </a>
-                                </td>
-                                <td>{!! $ticket->status ? 'Pending' : 'Answered' !!}</td>
-                                <td>{!! date('F d, Y H:i', strtotime($ticket->created_at))  !!}</td>
-                                <td>
-                                    <a href="{!! action('TicketsController@show', $ticket->slug) !!}" class="btn btn-xs btn-default">View</a>
-                                    <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="btn btn-xs btn-info">Edit</a>
+                                    {!! date('F d, Y H:i', strtotime($report->created_at))  !!}
+
                                 </td>
                                 <td>
-                                    <form method="post" action="{!! action('TicketsController@destroy', $ticket->slug) !!}" class="pull-left">
+                                    <a href="{!! action('Admin\ReportsController@show', $report->id) !!}" class="btn btn-xs btn-default">View</a>
+                                </td>
+                                <td>
+                                    <form method="post" action="{!! action('Admin\ReportsController@destroy', $report->id) !!}" class="pull-left">
                                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                         <div class="form-group">
                                             <div>
@@ -91,16 +92,3 @@
     </div>
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
